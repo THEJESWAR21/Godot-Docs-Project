@@ -16,9 +16,9 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_ykoj7"]
 material = SubResource("StandardMaterial3D_c64eg")
 
-[sub_resource type="Curve3D" id="Curve3D_gv1th"]
+[sub_resource type="Curve3D" id="Curve3D_dmgw6"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.7889, -0.00012207, -17.1903, 0, 0, 0, 0, 0, 0, -16.7652, 0, 14.9461, 0, 0, 0, 0, 0, 0, 14.5528, 0, 14.9953, 0, 0, 0, 0, 0, 0, 14.3365, -0.00012207, -17.1464, 0, 0, 0, 0, 0, 0, -16.7889, -0.00012207, -17.1903),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.8558, 0, -17.0565, 0, 0, 0, 0, 0, 0, 14.4479, 0, -17.0565, 0, 0, 0, 0, 0, 0, 14.5148, 0, 14.983, 0, 0, 0, 0, 0, 0, -16.8558, 0, 15.0499, 0, 0, 0, 0, 0, 0, -16.8558, 0, -17.0565),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -26,6 +26,10 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_cvvs2")
 mob_scene = ExtResource("2_xpi7r")
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -74,13 +78,9 @@ mesh = SubResource("CylinderMesh_ykoj7")
 skeleton = NodePath("")
 
 [node name="SpawnPath" type="Path3D" parent="."]
-curve = SubResource("Curve3D_gv1th")
+curve = SubResource("Curve3D_dmgw6")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.999999, -2.80442e-09, -0.000738294, 1.11022e-16, 1, -3.7985e-06, 0.000738294, -3.7985e-06, -0.999999, -16.7889, -0.00012207, -17.1903)
-
-[node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.8558, 0, -17.0565)
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
