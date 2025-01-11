@@ -4,6 +4,9 @@ extends CharacterBody3D
 @export var fall_acceleration = 17
 
 var target_velocity = Vector3.ZERO
+@export var jump_impulse = 20
+@export var bounce_impulse = 16
+
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -30,6 +33,13 @@ func _physics_process(delta):
 	velocity = target_velocity
 	move_and_slide()
 	
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		target_velocity.y = jump_impulse
+		
+		
+	
+
+
 	
 	
 		

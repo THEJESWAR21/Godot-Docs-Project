@@ -6,8 +6,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_56ig7"]
 size = Vector3(1.50835, 1.0636, 2.30353)
 
-[node name="Mob" type="CharacterBody3D"]
-collision_layer = 0
+[node name="Mob" type="CharacterBody3D" groups=["mob"]]
+collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_7cxoo")
 
@@ -18,3 +18,8 @@ script = ExtResource("1_7cxoo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0217041, 0.160217, 0.319581)
 shape = SubResource("BoxShape3D_56ig7")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-1.20862, -0.950133, -1.39971, 2.41724, 1.90027, 3.5006)
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]
