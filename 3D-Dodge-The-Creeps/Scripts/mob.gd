@@ -2,11 +2,6 @@ extends CharacterBody3D
 
 signal squashed
 
-
-func squash():
-	squashed.emit()
-	queue_free()
-
 @export var min_speed = 10
 @export var max_speed = 18
 
@@ -22,4 +17,8 @@ func initialize(start_position, player_position):
 	
 
 func _on_visibility_notifier_screen_exited():
+	queue_free()
+
+func squash():
+	squashed.emit()
 	queue_free()

@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://6x8cm72xc0ye"]
+[gd_scene load_steps=12 format=3 uid="uid://6x8cm72xc0ye"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_cvvs2"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_cvvs2"]
 [ext_resource type="PackedScene" uid="uid://csrroekjhppay" path="res://Scenes/player.tscn" id="1_olvdo"]
 [ext_resource type="PackedScene" uid="uid://bi6q3mofobgau" path="res://Scenes/mob.tscn" id="2_xpi7r"]
+[ext_resource type="FontFile" uid="uid://igc0iaubbwas" path="res://fonts/Montserrat-Medium.ttf" id="4_6pun2"]
+[ext_resource type="Script" path="res://Scripts/score_label.gd" id="5_gce1n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_goiy4"]
 size = Vector3(60, 2, 60)
@@ -22,6 +24,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="Theme" id="Theme_rqwg5"]
+default_font = ExtResource("4_6pun2")
+default_font_size = 22
 
 [node name="Main" type="Node"]
 script = ExtResource("1_cvvs2")
@@ -85,4 +91,22 @@ curve = SubResource("Curve3D_dmgw6")
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.8558, 0, -17.0565)
 
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 21.0
+offset_right = 97.0
+offset_bottom = 44.0
+theme = SubResource("Theme_rqwg5")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Score: 0"
+script = ExtResource("5_gce1n")
+
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
