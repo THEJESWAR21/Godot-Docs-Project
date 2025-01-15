@@ -13,11 +13,12 @@ func _on_mob_timer_timeout():
 	var player_position = $Player.position
 	mob.initialize(mob_spawn_location.position, player_position)
 	add_child(mob)
-	mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())
-	
+	mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())	
 
 
 func _on_player_hit() -> void:
+	$MusicPlayer.stop()
+	$MusicPlayer/Gameover.play()
 	$MobTimer.stop()
 	$UserInterface/Retry.show()
 	

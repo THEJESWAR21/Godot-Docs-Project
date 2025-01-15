@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://6x8cm72xc0ye"]
+[gd_scene load_steps=13 format=3 uid="uid://6x8cm72xc0ye"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_cvvs2"]
 [ext_resource type="PackedScene" uid="uid://csrroekjhppay" path="res://Scenes/player.tscn" id="1_olvdo"]
 [ext_resource type="PackedScene" uid="uid://bi6q3mofobgau" path="res://Scenes/mob.tscn" id="2_xpi7r"]
 [ext_resource type="FontFile" uid="uid://igc0iaubbwas" path="res://fonts/Montserrat-Medium.ttf" id="4_6pun2"]
 [ext_resource type="Script" path="res://Scripts/score_label.gd" id="5_gce1n"]
+[ext_resource type="PackedScene" uid="uid://dydmyao0bnh8i" path="res://Scenes/music_player.tscn" id="6_bfycu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_goiy4"]
 size = Vector3(60, 2, 60)
@@ -133,6 +134,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press Enter To Retry"
+
+[node name="MusicPlayer" parent="." instance=ExtResource("6_bfycu")]
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
