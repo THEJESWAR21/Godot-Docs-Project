@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dydmyao0bnh8i"]
 
-[ext_resource type="AudioStream" uid="uid://do4txncqn73xp" path="res://art/House In a Forest Loop.ogg" id="1_5an5u"]
-[ext_resource type="AudioStream" uid="uid://sse55lcd6i34" path="res://art/gameover.wav" id="2_m0l0d"]
+[ext_resource type="AudioStream" uid="uid://do4txncqn73xp" path="res://Assets/Sounds/House In a Forest Loop.ogg" id="1_5an5u"]
+[ext_resource type="AudioStream" uid="uid://sse55lcd6i34" path="res://Assets/Sounds/gameover.wav" id="2_m0l0d"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_5an5u")
